@@ -1,7 +1,7 @@
 'use strict';
 
-let ExtractTextPlugin = require("extract-text-webpack-plugin");
-let webpack = require("webpack");
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/app',
@@ -9,11 +9,11 @@ module.exports = {
   output: {
     path: __dirname + '/public',
     publicPath: '/',
-    filename: "js/app.js"
+    filename: 'js/app.js'
   },
   resolve: {
-    modulesDirectories: ["node_modules"],
-    extensions: ["", ".js", '.css']
+    modulesDirectories: ['node_modules'],
+    extensions: ['', '.js', '.css']
   },
   module: {
     loaders: [
@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
         test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
@@ -37,10 +37,10 @@ module.exports = {
     noParse: /\/node_modules\/angular\/angular/
   },
   plugins: [
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin('css/app.css'),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ]
 };

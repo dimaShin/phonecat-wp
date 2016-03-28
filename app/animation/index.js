@@ -4,7 +4,7 @@ export default phonecatAnimation => {
   phonecatAnimation.animation('.phone', function() {
 
     let animateUp = function(element, className, done) {
-      if(className != 'active') {
+      if(className !== 'active') {
         return;
       }
       element.css({
@@ -26,7 +26,7 @@ export default phonecatAnimation => {
     };
 
     let animateDown = function(element, className, done) {
-      if(className != 'active') {
+      if(className !== 'active') {
         return;
       }
       element.css({
