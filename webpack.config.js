@@ -15,7 +15,6 @@ module.exports = {
     modulesDirectories: ["node_modules"],
     extensions: ["", ".js", '.css']
   },
-
   module: {
     loaders: [
       { test: /\.js$/,
@@ -32,7 +31,7 @@ module.exports = {
       },
       {
         test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-        loader: 'file?name=img/[path][name].[ext]'
+        loader: 'file?name=img/[name].[ext]'
       }
     ],
     noParse: /\/node_modules\/angular\/angular/

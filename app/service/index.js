@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(phonecatService) {
+export default phonecatService => {
   phonecatService.factory('Phone', ['$resource',
     function($resource){
       return $resource('data/phones/:phoneId.json', {}, {

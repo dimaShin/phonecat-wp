@@ -8,6 +8,12 @@ import app from 'angular';
 import 'angular-route';
 import 'angular-resource';
 import 'angular-animate';
+import checkmarkFilter from './checkmarkFilter';
+import sidebar from './sidebar';
+import phonelist from './phonelist';
+import phonedetail from './phonedetail';
+import service from './service';
+import animation from './animation';
 
 const phonecat = app.module('phonecat',
   [
@@ -31,11 +37,12 @@ phonecat.config(['$routeProvider',
       otherwise({
         redirectTo: '/phones'
       });
-  }]);
+  }
+]);
 
-require('./sidebar')(phonecat);
-require('./phonelist')(phonecat);
-require('./phonedetail')(phonecat);
-require('./checkmarkFilter')(app);
-require('./service')(phonecatService);
-require('./animation')(phonecatAnimation);
+checkmarkFilter(app);
+sidebar(phonecat);
+phonelist(phonecat);
+phonedetail(phonecat);
+service(phonecatService);
+animation(phonecatAnimation);

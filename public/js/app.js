@@ -62,6 +62,30 @@
 
 	__webpack_require__(20);
 
+	var _checkmarkFilter = __webpack_require__(22);
+
+	var _checkmarkFilter2 = _interopRequireDefault(_checkmarkFilter);
+
+	var _sidebar = __webpack_require__(23);
+
+	var _sidebar2 = _interopRequireDefault(_sidebar);
+
+	var _phonelist = __webpack_require__(24);
+
+	var _phonelist2 = _interopRequireDefault(_phonelist);
+
+	var _phonedetail = __webpack_require__(25);
+
+	var _phonedetail2 = _interopRequireDefault(_phonedetail);
+
+	var _service = __webpack_require__(26);
+
+	var _service2 = _interopRequireDefault(_service);
+
+	var _animation = __webpack_require__(27);
+
+	var _animation2 = _interopRequireDefault(_animation);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var phonecat = _angular2.default.module('phonecat', ['ngRoute', 'checkmarkFilter', 'phonecatService', 'phonecatAnimation']);
@@ -78,12 +102,12 @@
 	  });
 	}]);
 
-	__webpack_require__(22)(phonecat);
-	__webpack_require__(23)(phonecat);
-	__webpack_require__(24)(phonecat);
-	__webpack_require__(25)(_angular2.default);
-	__webpack_require__(26)(phonecatService);
-	__webpack_require__(27)(phonecatAnimation);
+	(0, _checkmarkFilter2.default)(_angular2.default);
+	(0, _sidebar2.default)(phonecat);
+	(0, _phonelist2.default)(phonecat);
+	(0, _phonedetail2.default)(phonecat);
+	(0, _service2.default)(phonecatService);
+	(0, _animation2.default)(phonecatAnimation);
 
 /***/ },
 /* 1 */
@@ -36793,7 +36817,29 @@
 
 	'use strict';
 
-	module.exports = function (phonecat) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (app) {
+	  app.module('checkmarkFilter', []).filter('checkmark', function () {
+	    return function (input) {
+	      return input ? '✓' : '✘';
+	    };
+	  });
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (phonecat) {
 	  phonecat.directive('sidebar', function () {
 	    return {
 	      restrict: 'E',
@@ -36806,12 +36852,16 @@
 	};
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	module.exports = function (phonecat) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (phonecat) {
 	  phonecat.directive('phonelist', function () {
 	    return {
 	      restrict: 'E',
@@ -36825,12 +36875,16 @@
 	};
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	module.exports = function (phonecat) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (phonecat) {
 	  phonecat.directive('phonedetail', function () {
 	    return {
 	      restrict: 'E',
@@ -36849,26 +36903,16 @@
 	};
 
 /***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	module.exports = function (app) {
-	  app.module('checkmarkFilter', []).filter('checkmark', function () {
-	    return function (input) {
-	      return input ? '✓' : '✘';
-	    };
-	  });
-	};
-
-/***/ },
 /* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	module.exports = function (phonecatService) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (phonecatService) {
 	  phonecatService.factory('Phone', ['$resource', function ($resource) {
 	    return $resource('data/phones/:phoneId.json', {}, {
 	      query: {
@@ -36885,7 +36929,11 @@
 
 	/* WEBPACK VAR INJECTION */(function(jQuery) {'use strict';
 
-	module.exports = function (phonecatAnimation) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function (phonecatAnimation) {
 	  phonecatAnimation.animation('.phone', function () {
 
 	    var animateUp = function animateUp(element, className, done) {

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(phonecatAnimation) {
+export default phonecatAnimation => {
   phonecatAnimation.animation('.phone', function() {
 
     let animateUp = function(element, className, done) {
@@ -23,7 +23,7 @@ module.exports = function(phonecatAnimation) {
           element.stop();
         }
       };
-    }
+    };
 
     let animateDown = function(element, className, done) {
       if(className != 'active') {
@@ -44,7 +44,7 @@ module.exports = function(phonecatAnimation) {
           element.stop();
         }
       };
-    }
+    };
 
     return {
       addClass: animateUp,

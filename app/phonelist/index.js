@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(phonecat) {
+export default phonecat => {
   phonecat.directive('phonelist', function() {
     return {
       restrict: 'E',
