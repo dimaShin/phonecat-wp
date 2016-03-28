@@ -4,7 +4,11 @@
   "description": "training phonecat app",
   "dependencies": {
     "angular": "^1.5.3",
-    "bootstrap": "^3.3.6"
+    "angular-animate": "^1.5.3",
+    "angular-resource": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.2"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

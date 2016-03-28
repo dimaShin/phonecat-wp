@@ -1,6 +1,7 @@
 'use strict';
 
 let ExtractTextPlugin = require("extract-text-webpack-plugin");
+let webpack = require("webpack");
 
 module.exports = {
   context: __dirname + '/app',
@@ -14,6 +15,7 @@ module.exports = {
     modulesDirectories: ["node_modules"],
     extensions: ["", ".js", '.css']
   },
+
   module: {
     loaders: [
       { test: /\.js$/,
@@ -29,25 +31,17 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       {
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        test:   /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
+        loader: 'file?name=img/[path][name].[ext]'
       }
     ],
     noParse: /\/node_modules\/angular\/angular/
   },
   plugins: [
-    new ExtractTextPlugin("css/app.css")
+    new ExtractTextPlugin("css/app.css"),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
   ]
 };
