@@ -1,7 +1,9 @@
 'use strict';
 
-export default phonecatAnimation => {
-  phonecatAnimation.animation('.phone', function() {
+import 'angular';
+import 'angular-animate';
+
+angular.module('phonecatAnimation', ['ngAnimate']).animation('.phone', function() {
 
     let animateUp = function(element, className, done) {
       if(className !== 'active') {
@@ -52,4 +54,3 @@ export default phonecatAnimation => {
     };
 
   });
-};

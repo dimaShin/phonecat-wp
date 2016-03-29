@@ -1,7 +1,8 @@
 'use strict';
 
-export default phonecat => {
-  phonecat.directive('sidebar', function() {
+import 'angular';
+
+angular.module('sidebarDirective', []).directive('sidebar', () => {
     return {
       restrict: 'E',
       templateUrl: '../app/sidebar/sidebar.html',
@@ -10,4 +11,3 @@ export default phonecat => {
       }]
     };
   });
-};

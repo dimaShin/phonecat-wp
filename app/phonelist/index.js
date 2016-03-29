@@ -1,7 +1,8 @@
 'use strict';
 
-export default phonecat => {
-  phonecat.directive('phonelist', function() {
+import 'angular';
+
+angular.module('phonelistDirective', []).directive('phonelist', () => {
     return {
       restrict: 'E',
       templateUrl: '../app/phonelist/phone-list.html',
@@ -11,4 +12,3 @@ export default phonecat => {
       }],
     };
   });
-};
