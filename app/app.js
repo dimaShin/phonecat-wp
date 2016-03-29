@@ -16,12 +16,7 @@ import {SidebarDirective} from './sidebar';
 import {PhonelistDirective} from './phonelist';
 import {PhonedetailDirective} from './phonedetail';
 
-ng.module('phonecat',
-  [
-    ngRoute,
-    ngResource,
-    ngAnimate
-  ])
+ng.module('phonecat', [ngRoute, ngResource, ngAnimate])
   .factory('Phone', ['$resource', $resource => new PhonecatService($resource)])
   .config(['$routeProvider', $routeProvider => new Config($routeProvider)])
   .animation('.phone', () => new PhonecatAnimation())

@@ -1,14 +1,20 @@
 'use strict';
 
+class sidebarController {
+
+  constructor() {
+    this.orderProp = 'age';
+  }
+}
+
 export class SidebarDirective {
 
   constructor() {
     return {
       restrict: 'E',
       templateUrl: '../app/sidebar/sidebar.html',
-      controller: ['$scope', function($scope) {
-        $scope.orderProp = 'age';
-      }]
+      controller: sidebarController,
+      controllerAs: 'sidebarCtrl'
     };
   }
 }

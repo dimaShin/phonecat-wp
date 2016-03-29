@@ -46799,15 +46799,20 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var sidebarController = function sidebarController() {
+	  _classCallCheck(this, sidebarController);
+
+	  this.orderProp = 'age';
+	};
+
 	var SidebarDirective = exports.SidebarDirective = function SidebarDirective() {
 	  _classCallCheck(this, SidebarDirective);
 
 	  return {
 	    restrict: 'E',
 	    templateUrl: '../app/sidebar/sidebar.html',
-	    controller: ['$scope', function ($scope) {
-	      $scope.orderProp = 'age';
-	    }]
+	    controller: sidebarController,
+	    controllerAs: 'sidebarCtrl'
 	  };
 	};
 
@@ -46823,33 +46828,62 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var phoneListController = function phoneListController(Phone) {
+	  _classCallCheck(this, phoneListController);
+
+	  this.phones = Phone.query();
+	  this.orderProp = 'age';
+	};
+
+	phoneListController.$inject = ['Phone'];
+
 	var PhonelistDirective = exports.PhonelistDirective = function PhonelistDirective() {
 	  _classCallCheck(this, PhonelistDirective);
 
 	  return {
 	    restrict: 'E',
 	    templateUrl: '../app/phonelist/phone-list.html',
-	    controller: ['$scope', 'Phone', function ($scope, Phone) {
-	      $scope.phones = Phone.query();
-	      $scope.orderProp = 'age';
-	    }]
+	    controller: phoneListController,
+	    controllerAs: 'phoneListCtrl'
 	  };
 	};
 
 /***/ },
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.PhonedetailDirective = undefined;
 
-	__webpack_require__(14);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var phoneListController = function () {
+	  function phoneListController(Phone, $routeParams) {
+	    var _this = this;
+
+	    _classCallCheck(this, phoneListController);
+
+	    this.phone = Phone.get({ phoneId: $routeParams.phoneId }, function (phone) {
+	      _this.mainImageUrl = phone.images[0];
+	    });
+	  }
+
+	  _createClass(phoneListController, [{
+	    key: 'setImage',
+	    value: function setImage(imageUrl) {
+	      this.mainImageUrl = imageUrl;
+	    }
+	  }]);
+
+	  return phoneListController;
+	}();
+
+	phoneListController.$inject = ['Phone', '$routeParams'];
 
 	var PhonedetailDirective = exports.PhonedetailDirective = function PhonedetailDirective() {
 	  _classCallCheck(this, PhonedetailDirective);
@@ -46857,15 +46891,17 @@
 	  return {
 	    restrict: 'E',
 	    templateUrl: '../app/phonedetail/phone-detail.html',
-	    controller: ['$scope', 'Phone', '$routeParams', function ($scope, Phone, $routeParams) {
-	      $scope.phone = Phone.get({ phoneId: $routeParams.phoneId }, function (phone) {
-	        $scope.mainImageUrl = phone.images[0];
-	      });
-
-	      $scope.setImage = function (imageUrl) {
-	        $scope.mainImageUrl = imageUrl;
-	      };
-	    }]
+	    controller: phoneListController,
+	    controllerAs: 'phoneListCtrl'
+	    // controller: ['$scope', 'Phone', '$routeParams', function($scope, Phone, $routeParams) {
+	    //     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+	    //     $scope.mainImageUrl = phone.images[0];
+	    //   });
+	    //
+	    //   $scope.setImage = function(imageUrl) {
+	    //     $scope.mainImageUrl = imageUrl;
+	    //   };
+	    // }],
 	  };
 	};
 

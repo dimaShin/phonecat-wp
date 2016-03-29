@@ -1,6 +1,6 @@
 <div class="col-md-10">
   <ul class="phones">
-    <li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+    <li ng-repeat="phone in phoneListCtrl.phones | filter:query | orderBy:sidebarCtrl.orderProp"
         class="thumbnail phone-listing">
       <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}"></a>
       <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
