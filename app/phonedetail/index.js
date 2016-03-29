@@ -2,7 +2,9 @@
 
 import 'angular';
 
-angular.module('phonedetailDirective', []).directive('phonedetail', () => {
+export class PhonedetailDirective {
+
+  constructor() {
     return {
       restrict: 'E',
       templateUrl: '../app/phonedetail/phone-detail.html',
@@ -16,4 +18,5 @@ angular.module('phonedetailDirective', []).directive('phonedetail', () => {
         };
       }],
     };
-  });
+  }
+}

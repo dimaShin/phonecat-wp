@@ -1,8 +1,8 @@
 'use strict';
 
-import 'angular';
+export class PhonelistDirective {
 
-angular.module('phonelistDirective', []).directive('phonelist', () => {
+  constructor() {
     return {
       restrict: 'E',
       templateUrl: '../app/phonelist/phone-list.html',
@@ -11,4 +11,5 @@ angular.module('phonelistDirective', []).directive('phonelist', () => {
           $scope.orderProp = 'age';
       }],
     };
-  });
+  }
+}

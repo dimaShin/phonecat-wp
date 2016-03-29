@@ -1,9 +1,10 @@
 'use strict';
 
-import 'angular';
+export class CheckmarkFilter {
 
-angular.module('checkmarkFilter', []).filter('checkmark', () => {
+  constructor() {
     return function(input) {
       return input ? '\u2713' : '\u2718';
     };
-  });
+  }
+}

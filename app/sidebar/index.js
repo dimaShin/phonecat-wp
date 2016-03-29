@@ -1,8 +1,8 @@
 'use strict';
 
-import 'angular';
+export class SidebarDirective {
 
-angular.module('sidebarDirective', []).directive('sidebar', () => {
+  constructor() {
     return {
       restrict: 'E',
       templateUrl: '../app/sidebar/sidebar.html',
@@ -10,4 +10,5 @@ angular.module('sidebarDirective', []).directive('sidebar', () => {
         $scope.orderProp = 'age';
       }]
     };
-  });
+  }
+}

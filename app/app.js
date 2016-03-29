@@ -4,35 +4,28 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../public/css/style.css';
 import '../public/css/animation.css';
 
-import 'angular';
-import 'angular-route';
-import './checkmarkFilter';
-import './sidebar';
-import './phonelist';
-import './phonedetail';
-import './service';
-import './animation';
+import ng from 'angular';
+import ngRoute from 'angular-route';
+import ngResource from 'angular-resource';
+import ngAnimate from 'angular-animate';
+import {PhonecatService} from './service';
+import {Config} from './config';
+import {PhonecatAnimation} from './animation';
+import {CheckmarkFilter} from './checkmarkFilter';
+import {SidebarDirective} from './sidebar';
+import {PhonelistDirective} from './phonelist';
+import {PhonedetailDirective} from './phonedetail';
 
-angular.module('phonecat',
+ng.module('phonecat',
   [
-    'ngRoute',
-    'checkmarkFilter',
-    'phonecatService',
-    'phonecatAnimation',
-    'sidebarDirective',
-    'phonelistDirective',
-    'phonedetailDirective'
-  ]).config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/phones', {
-        template: '<sidebar></sidebar><phonelist></phonelist>'
-      }).
-      when('/phones/:phoneId', {
-        template: '<phonedetail></phonedetail>',
-      }).
-      otherwise({
-        redirectTo: '/phones'
-      });
-  }
-]);
+    ngRoute,
+    ngResource,
+    ngAnimate
+  ])
+  .factory('Phone', ['$resource', $resource => new PhonecatService($resource)])
+  .config(['$routeProvider', $routeProvider => new Config($routeProvider)])
+  .animation('.phone', () => new PhonecatAnimation())
+  .filter('checkmark', () => new CheckmarkFilter())
+  .directive('phonelist', () => new PhonelistDirective())
+  .directive('phonedetail', () => new PhonedetailDirective())
+  .directive('sidebar', () => new SidebarDirective());
