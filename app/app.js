@@ -17,7 +17,7 @@ import {PhonelistDirective} from './phonelist';
 import {PhonedetailDirective} from './phonedetail';
 
 ng.module('phonecat', [ngRoute, ngResource, ngAnimate])
-  .factory('Phone', ['$resource', $resource => new PhonecatService($resource)])
+  .service('Phone', ['$resource', PhonecatService])
   .config(['$routeProvider', $routeProvider => new Config($routeProvider)])
   .animation('.phone', () => new PhonecatAnimation())
   .filter('checkmark', () => new CheckmarkFilter())

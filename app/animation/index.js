@@ -1,9 +1,8 @@
 'use strict';
 
 export class PhonecatAnimation {
-
   constructor() { }
-
+  
   addClass (element, className, done) {
     if(className !== 'active') {
       return;

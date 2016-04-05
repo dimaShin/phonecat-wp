@@ -1,7 +1,6 @@
 'use strict';
 
 export class Config {
-
   constructor($routeProvider) {
     return $routeProvider.
       when('/phones', {

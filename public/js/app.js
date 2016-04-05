@@ -84,9 +84,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module('phonecat', [_angularRoute2.default, _angularResource2.default, _angularAnimate2.default]).factory('Phone', ['$resource', function ($resource) {
-	  return new _service.PhonecatService($resource);
-	}]).config(['$routeProvider', function ($routeProvider) {
+	_angular2.default.module('phonecat', [_angularRoute2.default, _angularResource2.default, _angularAnimate2.default]).service('Phone', ['$resource', _service.PhonecatService]).config(['$routeProvider', function ($routeProvider) {
 	  return new _config.Config($routeProvider);
 	}]).animation('.phone', function () {
 	  return new _animation.PhonecatAnimation();
@@ -46803,6 +46801,10 @@
 	  _classCallCheck(this, sidebarController);
 
 	  this.orderProp = 'age';
+	  this.sortList = {
+	    'Alphabetical': 'name',
+	    'Newest': 'age'
+	  };
 	};
 
 	var SidebarDirective = exports.SidebarDirective = function SidebarDirective() {
@@ -46893,15 +46895,6 @@
 	    templateUrl: '../app/phonedetail/phone-detail.html',
 	    controller: phoneListController,
 	    controllerAs: 'phoneListCtrl'
-	    // controller: ['$scope', 'Phone', '$routeParams', function($scope, Phone, $routeParams) {
-	    //     $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-	    //     $scope.mainImageUrl = phone.images[0];
-	    //   });
-	    //
-	    //   $scope.setImage = function(imageUrl) {
-	    //     $scope.mainImageUrl = imageUrl;
-	    //   };
-	    // }],
 	  };
 	};
 

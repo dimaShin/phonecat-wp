@@ -17,7 +17,6 @@ class phoneListController {
 }
 
 export class PhonedetailDirective {
-
   constructor() {
     return {
       restrict: 'E',

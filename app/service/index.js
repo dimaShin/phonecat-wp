@@ -1,7 +1,6 @@
 'use strict';
 
 export class PhonecatService {
-
   constructor($resource) {
     return $resource('data/phones/:phoneId.json', {}, {
       query: {
